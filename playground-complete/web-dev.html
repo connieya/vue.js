@@ -6,17 +6,27 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+  <!-- react,vue가 나오이 전 일반적인 웹 개발은 Html, css , javascript 만을 사용하였다. -->
 <body>
   <div id="app"></div>
-
+<!--   
+  html 은 화면에 dom, 태그의 내용을 담는 것이고
+  
+  javascript는 그 dom, 태그의 내용을 조작하는것이다. -->
   <script>
-    // console.log(div);
+   
+    
     var div = document.querySelector('#app');
+    // 위에 코드를 제이쿼리로 작성하면 다음과 같다.-> $('#app')
     var str = 'hello world';
+    //console.log(div);
     div.innerHTML = str;
+    // 이런식으로 문자를 변수에 담고 그 변수를 이용해서 javascript 에 다시 담는다.
 
     str = 'hello world!!!';
     div.innerHTML = str;
+
+    // 이것은 일반적인 웹 개발이다 과연 vue.js로 어떻게 쉽게 할 수 있을까??
   </script>
 </body>
 </html>

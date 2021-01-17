@@ -4,17 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>instance.html</title>
 </head>
 <body>
   <div id="app">
-    <!-- ... -->
+    <!-- 밑에 element 속성으로 호출했음 -->
+    
   </div>
 
+
+  <!-- //vue.js 공식 사이트에 있음 -->
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
     // var options = 
+    // vm을 console로 찍어보니, vue가 제공하는 api를 볼 수 있다.
+    //api는 기능이다.
     var vm = new Vue({
+      // element의 약자다, element로 위에 있는 div 태그를 붙여놨다.
       el: '#app',
       data: {
         message: 'hi'
@@ -25,7 +31,28 @@
       created: function() {
 
       }
+
+      
     });
+    // 위에 코드와 같다.
+    // var options = {
+    //     el: '#app',
+    //   data: {
+    //     message: 'hi'
+    //   },
+    //   methods: {
+
+    //   },
+    //   created: function () {
+
+    //   }
+
+
+    // }
+    // var vm = new Vue(options);
+    console.log("vm : ",vm)
+    console.log("data:" , vm.data)
   </script>
+  
 </body>
 </html>

@@ -10,22 +10,57 @@
   <div id="app">
     <app-header></app-header>
     <app-footer></app-footer>
+    <app-content></app-content>
+    <!-- = <div>content</div> -->
   </div>
-
+  <hr/>
   <div id="app2">
     <app-header></app-header>
-    <app-footer></app-footer>
+    <app-footer v-bind:hello="message"></app-footer>
+    <app-content></app-content>
   </div>
 
+  <hr/>
+  <div id="app3">
+   <app-p></app-p>
+   <app-header></app-header>
+   <app-content></app-content> <!--전역 컴포넌트가 없고, 지역 컴포넌트에도 없어서 웹에 출력되지않음 -->
+    <app-footer></app-footer> <!--전역 컴포넌트는 없지만 지역 컴포넌트가 있어서 출력됨 -->
+    <app-nav></app-nav> <!--지역 컴포넌트가 없더라도 전역 컴포넌트가 있기 때문에 출력됨 -->
+   
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
     // 전역 컴포넌트
     // Vue.component('컴포넌트 이름', 컴포넌트 내용);
+    // 전역이기 때문에 플러그인이나 라이브러리에 활용한다.
     Vue.component('app-header', {
-      template: '<h1>Header</h1>'
+     template: '<h1>Header</h1>'
     });  
+    // 전역 컴포넌트는 인스턴스를 생성 할 때마다 따로 등록하지 않아도
+    // 기본적으로 등록 되어있다.
 
+    //전역 컴포넌트
+    Vue.component('app-content',{
+    template:  ' <div>content</div>'
+    })
+
+    Vue.component('app-nav',{
+      template: '<h2>nav</h2>'
+    })
+
+    var appFooter = {
+        template: '<footer>{{ hello }}</footer>',
+        props: ['hello']
+      }
+
+    // 위 컴포넌트와 밑 컴포넌트는 같다
+    // 그럼 차이점은 뭘까? 
+    // 전역 컴포넌트는 component , 지역 컴포넌트는 components
+
+    // vue 생성
     new Vue({
+      // 인스턴스
       el: '#app',
       // 지역 컴포넌트 등록 방식
       components: {
@@ -35,12 +70,32 @@
         }
       },
     });
-
+    //인스턴스를 생성하면 개발자 도구에서 Root 컴포넌트로 인식
+    // 즉 인스턴스를 생성하면 기본적으로 Root 라는 컴포넌트가 된다.
     new Vue({
       el: '#app2',
+      // 전역 컴포넌트  등록 방법 key & value
+
+      // components 이기 때문에 아래와 같이 component 2개 만듬
       components: {
-        'app-footer': {
-          template: '<footer>footer</footer>'
+        'app-footer': appFooter,
+        data:{
+          message: 'cony park hello'
+        },
+        'app-content':{
+          template : '<div>content</div>'
+        }
+      }
+    })
+
+    // 밑에는 틀린 형식 인듯
+    // 다시 수정해보니 틀린 형식이 아니었음
+    new Vue({
+      el : '#app3',
+    
+      components :{
+        'app-p' : {
+          template : '<p>text</p>'
         }
       }
     })

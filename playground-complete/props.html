@@ -10,6 +10,7 @@
   <div id="app">
     <!-- <app-header v-bind:프롭스 속성 이름="상위 컴포넌트의 데이터 이름"></app-header> -->
     <app-header v-bind:propsdata="message"></app-header>
+    <!-- app-header의 상위컴포넌트는 크롬 개발자도구로 확인하면 Root이다. -->
     <app-content v-bind:propsdata="num"></app-content>
   </div>
 
@@ -30,6 +31,7 @@
         'app-header': appHeader,
         'app-content': appContent
       },
+      // 인스턴스의 데이터 속성
       data: {
         message: 'hi',
         num: 10
