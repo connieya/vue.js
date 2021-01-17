@@ -16,8 +16,8 @@
   <hr/>
   <div id="app2">
     <app-header></app-header>
-    <app-footer v-bind:hello="message"></app-footer>
-    <app-content></app-content>
+    <app-footer v-bind:cony="message"></app-footer>
+    <app-content v-bind:propsdata="num"></app-content>
   </div>
 
   <hr/>
@@ -50,9 +50,14 @@
     })
 
     var appFooter = {
-        template: '<footer>{{ hello }}</footer>',
-        props: ['hello']
+        template: '<footer>{{ cony }}</footer>',
+        props: ['cony']
       }
+
+    var appContent = {
+          template: '<div>{{ propsdata }}</div>',
+          props: ['propsdata']
+        }
 
     // 위 컴포넌트와 밑 컴포넌트는 같다
     // 그럼 차이점은 뭘까? 
@@ -79,12 +84,12 @@
       // components 이기 때문에 아래와 같이 component 2개 만듬
       components: {
         'app-footer': appFooter,
-        data:{
-          message: 'cony park hello'
-        },
-        'app-content':{
-          template : '<div>content</div>'
-        }
+        'app-content': appContent
+      },
+      //인스턴스의 데이터 속성
+       data: {
+        message: 'hi i am cony',
+        num: 10
       }
     })
 
