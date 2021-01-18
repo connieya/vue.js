@@ -7,22 +7,27 @@
   <title>Document</title>
 </head>
 <body>
+  <!-- 같은 컴포넌트 레벨간의 통신 방법  -->
+  <!-- event와 props로 상위컴포넌트로 값은 전달하고 받음으로써 통신한다.  -->
   <div id="app">
     <app-header v-bind:propsdata="num"></app-header>
+<!-- appContent에서 event로 10을 Root에 올려준다.  -->
     <app-content v-on:pass="deliverNum"></app-content>
+   <!-- Root에서 받은 10을 props를 통해 AppHeader로 내려준다.  -->
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
     var appHeader = {
-      template: '<div>header</div>',
+      template: '<div>header  {{propsdata}} </div>',
       props: ['propsdata']
     }
     var appContent = {
-      template: '<div>content<button v-on:click="passNum">pass</button></div>',
+      template: '<div>content {{pass}}<button v-on:click="passNum">pass </button></div>',
       methods: {
         passNum: function() {
           this.$emit('pass', 10);
+          console.log("20");
         }
       }
     }
