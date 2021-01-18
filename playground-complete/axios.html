@@ -8,9 +8,12 @@
 </head>
 <body>
   <div id="app">
+
+        <!-- v- 를 사용하여 vue의 속성을 지정  -->
     <button v-on:click="getData">get user</button>
     <div>
       {{ users }}
+      <!-- 콧수염 괄호를 사용하는 것 데이터 바인딩  -->
     </div>
   </div>
 
@@ -24,10 +27,13 @@
       },
       methods: {
         getData: function() { 
+       //   console.log("this1 : ", this)
           var vm = this;
           axios.get('https://jsonplaceholder.typicode.com/users/')
             .then(function(response) {
               console.log(response.data);
+              
+         //     console.log("this2 : ",this)
               vm.users = response.data;
             })
             .catch(function(error) {

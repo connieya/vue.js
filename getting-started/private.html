@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 외부 함수 
+        function factory_movie(title) {
+                
+            // 내부 함수 
+            return {
+                    get_title: function () {
+                        return title;
+                    },
+                    set_title: function (_title) {
+                        title = _title
+                    }
+                }
+            }
+            ghost = factory_movie('Ghost in the shell');
+            matrix = factory_movie('Matrix');
+
+            console.log(ghost);
+            console.log(ghost.get_title());
+            console.log(matrix.get_title());
+
+            ghost.set_title('공각기동대');
+
+            console.log(ghost.get_title());
+            console.log(matrix.get_title());
+
+    </script>
+</body>
+</html>

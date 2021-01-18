@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>상위 컴포넌트  </div>
+        <app-footer v-on:update="showAlert" v-bind:propsdata="message"></app-footer>
+     <!-- 상위컴포넌트에서 v-on 디렉티브로 update 이벤트를 받아옴  -->
+     <!-- 이후 showAlert 메서드를 실행한다.  -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        // 하위 컴포넌트 appFooter
+        var appFooter = {
+            props: ['propsdata'],
+            template : '<div v-on:click="sendEvent"> {{ propsdata }} , footer임 </div>',
+            methods : {
+                sendEvent : function(){
+                    this.$emit('update', this.num);
+                      console.log("this.num :", this.num)
+                }
+            
+            },
+            data : function(){
+                return {
+                    num :10
+                }
+            }
+
+          
+
+ // 하위 컴포넌트에서 setEvent 메서드가 실행하여 update 이벤트 발생 
+        }
+
+        // 상위 컴포넌트 
+        new Vue({
+            el : '#app',
+            components : {
+                'app-footer' : appFooter
+            },
+            methods: {
+                showAlert : function(){
+                    alert('{{num}}')
+                }
+            },
+            data : {
+                message : 'hello~ Vue.js'
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>
