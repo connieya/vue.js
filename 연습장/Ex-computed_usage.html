@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .warning {
+            color:red;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 클래스이름은 warning인데 isError가 true면 warning클래스 false면 warning 클래스가 아니다.  -->
+        <p v-bind:class='isErrorClass'>  hello</p>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                isError :  true,
+               // cname : 'warning'
+            },
+            computed : {
+                isErrorClass : function(){
+                    return this.isError ? 'warning' : null;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
