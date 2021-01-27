@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 바인딩</title>
+</head>
+<body>
+    <div id="app">
+       <!-- <p id="abc1234">{{num}}</p>  -->
+        <p v-bind:id='uuid' v-bind:class='name'>{{num}}</p>
+        <p>{{doubleNum}}</p>
+        <div v-if="eating">
+            배고프다...
+        </div>
+
+        <div v-else>
+            배부르다.
+
+        </div>
+
+        <div v-show="eating">
+            배고프다...
+        </div>
+<!-- 
+        eating의 값이 true이기 때문에 화면에서 보이지만
+        false가 되면 화면에서 보이지 않는다.
+        하지만 v-if의 경우 elements 에서 완전히 사라지지만,
+        v-show 같은경우 display : none 상태가 된다. -->
+        <input type="text" v-model="message">
+        <p id="textEx" >  {{message}}</p>
+
+
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+       
+        new Vue({
+            el:'#app',
+            data:{
+                num :36,
+                uuid :'abc1234',
+                name : 'btn-primary',
+                eating: true,
+                message : ""
+
+            },
+            computed : {
+                doubleNum : function(){
+                    return this.num *2;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

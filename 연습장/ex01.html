@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex01</title>
+</head>
+<body>
+
+    <!-- 성공 -->
+    <div id="app">
+    <p v-bind:id="idss">A Paragraph.</p> 
+
+
+    <button  v-on:click="logText" >Try it</button>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+                idss : 'demo'
+            },
+            methods: {
+                logText: function () {
+                   document.getElementById('demo').innerHTML = "ㅇㅇㅇㅇㅇ"
+                }
+            }
+
+        })
+
+        // window.alert("안녕~")
+    </script>
+</body>
+</html>
