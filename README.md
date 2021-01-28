@@ -28,3 +28,18 @@ vue2를 선택
 
 cd 프로젝트 폴더위치
 npm run serve
+
+## 배웠던 내용 !! 복습하기
+
+- Reactivity
+- 인스턴스
+- 컴포넌트
+- 컴포넌트 통신
+  - props
+  - event emit
+- HTTP 통신 라이브러리 (axios)
+- 템플릿 문법
+  - 데이터 바인딩
+  - 뷰 디렉티브 (v-)
+- Vue CLI
+- 싱글 파일 컴포넌트
