@@ -43,3 +43,9 @@ npm run serve
   - 뷰 디렉티브 (v-)
 - Vue CLI
 - 싱글 파일 컴포넌트
+
+## git 없이 새로 vue 설치
+
+```
+vue create project-name --no-git
+```
